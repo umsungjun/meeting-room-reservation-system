@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>회원인증</title>
+
+<link href="/css/join.css" rel="stylesheet" type="text/css" />
+
+
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.9.2/i18n/jquery.ui.datepicker-ko.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$( "#birth" ).datepicker({
+    	dateFormat: 'yy-mm-dd',
+    	changeMonth: true,
+        changeYear: true,
+        yearRange: "1950:2015"
+    });
+
+});
+
+function idCheck(){
+	
+	if (joinForm.id.value.length < 1){
+			alert("아이디를 입력하세요.");
+			joinForm.id.focus();
+			return false;
+	}
+	
+	var id = $("#reg_mb_id").val();
+	var access = $("#message");
+	$.ajax({
+		url:"/idCheck?userId=" + id,
+		type: 'get',
+		dataType: 'json',
+		success:function(result){
+			if (result.msg=="true"){
+				access.html("<font color='green' size='2px;'><i class='fa fa-check'>&nbsp;사용 가능한 아이디입니다.</i></font>");
+				$("#flag").val("true");
+       	 	}
+			else{
+				access.html("<font color='red' size='2px;'><i class='fa fa-times'>&nbsp;이미 사용중인 아이디입니다.</i></font>");
+				$("#flag").val("false");
+			}
+		}
+	});
+}
+
+
+function DaumPostcode() {
+new daum.Postcode({
+	oncomplete: function(data) {
+		var addr = '';
+		var extraAddr = '';
+		if (data.userSelectedType === 'R') { 
+			addr = data.roadAddress;
+			} else {
+			addr = data.jibunAddress;
+			}
+		if(data.userSelectedType === 'R'){
+			if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+				extraAddr += data.bname;
+				}
+			if(data.buildingName !== '' && data.apartment === 'Y'){
+				extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+				}
+			if(extraAddr !== ''){
+				extraAddr = ' (' + extraAddr + ')';
+				}
+			document.getElementById("addr2").value = extraAddr;
+			} else {
+				document.getElementById("addr2").value = '';
+				}
+		document.getElementById("zip").value = data.zonecode;
+		document.getElementById("addr1").value = addr;
+		document.getElementById("addr2").focus();
+		}
+}).open();
+}
+
+
+function Check_Form() 
+{
+	if (joinForm.pass.value != joinForm.pass_re.value){
+		alert("패스워드가 일치하지 않습니다.");
+		joinForm.pass.focus();
+		return false;
+	}
+	if($("#flag").val() == "false"){
+		alert("ID 중복검사가 실시되지 않았습니다.");
+		$("id").focus();
+		return false;
+	}
+	return true;
+}
+
+function checkMsg(){
+	joinForm.id.focus();
+	var errCode = "${msgCode}";
+	if(errCode != ""){
+		alert(errCode);
+	}		
+}
+</script>
+
+
+
+</head>
+
+<body onload="checkCode()">
+<span class="leeLove">😍 이종진 교수님 사랑합니다 😍</span>
+<div class="container">
+<div class="commentWrapper">
+	<h1 class="joinMent">Welcome Back!</h1>
+			<div class="joinIntroBox">
+			<span class="joinComment">To keep connected with us please login with your personal info</span>
+			</div>
+			<a href="/login" class="joinBtn">SIGH IN</a>
+</div>
+<div class="joinWrapper">
+<form id="fregisterform" name="joinForm" method=post  onsubmit='Check_Form()' class="joinForm">
+
+ 
+    
+	<input  maxlength=20 size=20 id='reg_mb_id' name="id" class="ed" required  onblur="idCheck();" placeholder="id"/>
+	<span id="message"></span>
+	<input type="hidden" id="flag" name="flag" value="true">
+    
+	<input class=ed type=password name="pass" size=20 maxlength="20" required  placeholder="password1">
+    
+	<input class=ed type=password name="pass_re" size=20 maxlength=20 required placeholder="password2">
+  
+    
+	<input name="name" placeholder="Name"  class="ed">
+   
+	<input class=ed type=text id='reg_mb_email' name='email' size=38 maxlength=100  required  value='' placeholder="Email">
+	
+   
+	<input class='ed' type='text' id='birth' name='birthday' size='10' maxlength='10' minlength='10' required numeric value='' placeholder="BirthDay">
+    
+	<input class='ed' type=text name='phone' size=21 maxlength=20 required placeholder='PhoneNUmber' value=''>
+	
+	 <div class="addressBox">
+		<input class='ed' type=text id="zip" name="zip" required placeholder="Address" >  
+		
+		<a href="javascript:;" Onclick='DaumPostcode()'><img src="https://www.pngkey.com/png/full/207-2072722_address-symbol-png-download-date-time-venue-icon.png" class="mapImage"></a>
+		</div>
+	  
+	<input class=ed type=text id="addr1" name="addr1" size=60  required >
+	<input class=ed type=text id='addr2' name='addr2' size=60 required >
+	<div class="submitBox">
+	<input type="submit" class="myButton" value="SIGN UP" >
+	</div>
+</form>
+</div>
+</div>
+</body>
+</html>

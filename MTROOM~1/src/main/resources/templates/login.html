@@ -1,0 +1,66 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/login.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<script type="text/javascript">
+		function loginAction() {
+			login.action = "login";
+		}
+	</script>
+<body>
+	
+	<span class="leeLove">이종진 교수님 사랑합니다😍</span>
+	<div class="container">
+		<div class="loginWapper">
+			<form th:object="${user}" class="login-form" method="post"
+				name="login">
+				<div class="loginWapperTitleBox">
+					<h1>Sign in</h1>
+				</div>
+				<div th:if="${#fields.hasErrors()}">
+					<span class="fieldError"> 사용자의 정보가 일치하지않습니다. </span>
+				</div>
+
+				
+					<div class="field-error" th:errors="*{id}">아이디 오류</div>
+				
+				<input name='id' type="text" class="loginInput" placeholder="id" required/>
+
+				<div class="field-error" th:errors="*{pass}">비밀번호 오류</div>
+				
+				
+				<input name='pass' class="loginInput" type="password" placeholder="password" required/>
+				<a href="/findPass" class="pwd">Forgot your password?</a>
+				
+
+
+				<button type="submit" th:onclick="loginAction();" class="loginBtn">Sign In</button>
+
+				<p class="message">
+				
+				
+					
+				
+				</p>
+			</form>
+			</div>
+			<div class="joinWapper">
+			<h1 class="joinMent">Hello, Friend!</h1>
+			<div class="joinIntroBox">
+			<span class="joinComment">Enter your personal details and start journey with us</span>
+			</div>
+			<a href="/join" class="joinBtn">Sign Up</a>
+			</div>
+	</div>
+
+
+</body>
+
+</html>

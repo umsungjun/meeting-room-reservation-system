@@ -1,0 +1,164 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+body{
+	font-family: Spoqa Han Sans Neo, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    flex-direction: column;
+	
+}
+
+.leeLove{
+	margin-bottom: 20px;
+    font-size: 42px;
+}
+
+.container {
+  background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    display: flex;
+}
+
+.joinWrapper{
+	width: 50%;
+    height: 480px;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.joinWrapper::-webkit-scrollbar{
+	width:9px;
+}
+.joinWrapper::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 50px;
+}
+
+.joinWrapper::-webkit-scrollbar-track {
+    background-color: whitesmoke;
+    border-radius: 50px;
+  }
+  
+
+
+.commentWrapper{
+	width: 50%;
+	height: 480px;
+	background: #98A8F8;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+
+.joinIntroBox {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0px 62px;
+}
+a{
+	text-decoration: none;
+	color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.joinComment {
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    color: #fff;
+    margin: 30px 0 30px;
+    text-align: center;
+}
+
+.joinMent{
+	font-weight: bold;
+    margin: 0;
+    color: #ffffff;
+    font-size: 40px;
+}
+
+.joinBtn {
+    border-radius: 20px;
+    border: 1px solid white;
+    background-color: #98A8F8;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+.joinForm{
+	width:80%;
+}
+
+.joinForm input{
+background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 93%;
+}
+
+.mapImage{
+	width: 30px;
+    position: absolute;
+    margin: 12px 0px 0px 203px;
+    left: 0;
+}
+
+.addressBox{
+	position:relative;
+}
+
+.addressBox input{
+	background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 70%;
+    position:lelative;
+}
+
+input:focus { 
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+ }
+ 
+ .myButton {
+    border-radius: 20px;
+    border: 1px solid white !important;
+    background-color: #98A8F8 !important;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px !important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+.submitBox{
+	width:100%;
+	display:flex;
+	justify-content:center;
+}

@@ -1,0 +1,142 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+body{
+	font-family: Spoqa Han Sans Neo, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 98vh;
+    flex-direction: column;
+}
+a{
+	text-decoration: none;
+	color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.container {
+  background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 480px;
+    display: flex;
+}
+
+.loginWapperTitleBox h1{
+	font-weight: bold;
+    font-size: 44px;
+}
+
+.loginWapper{
+	width:50%;
+	height:100%;
+}
+
+.login-form{
+	display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+    background-color: #FFFFFF;
+    height: 480px;
+}
+
+.loginInput{
+	    background-color: #eee;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 85%;
+    border-radius: 6px;
+}
+
+.joinWapper{
+	width: 50%;
+    height: 480px;
+    background: #98A8F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loginBtn{
+	border-radius: 20px;
+    border: 1px solid #98A8F8;
+    background-color: #98A8F8;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.joinComment{
+	font-size: 16px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    color: #fff;
+    margin: 30px 0 30px;
+    text-align: center;
+}
+
+.joinBtn{
+	border-radius: 20px;
+    border: 1px solid white;
+    background-color: #98A8F8;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+.joinMent{
+	font-weight: bold;
+    margin: 0;
+    color: #ffffff;
+    font-size: 40px;
+}
+
+.joinIntroBox{
+	height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0px 62px;
+}
+
+.leeLove{
+	margin-bottom: 20px;
+    font-size: 42px;
+}
+
+.joinIntroBox {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0px 62px;
+}
+
+.joinComment {
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    color: #fff;
+    margin: 30px 0 30px;
+    text-align: center;
+}

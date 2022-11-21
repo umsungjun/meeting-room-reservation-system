@@ -1,0 +1,108 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>회의실관리 목록</title>
+<link href="/css/mtRoomList.css" rel="stylesheet" type="text/css" />
+
+<link href="/css/button.css" rel="stylesheet" type="text/css" />
+<script type="text/javaScript" language="javascript" defer="defer">
+<!--
+/*설명 : 회의실  목록 조회 */
+function fncSelectMtrList(pageNo){
+    document.listForm.searchCondition.value = "1";
+    document.listForm.pageIndex.value = pageNo;
+    document.listForm.action = "<c:url value='/mtRoomList'/>";
+    document.listForm.submit();
+}
+/*설명 : 회의실 상세조회 */
+function fncGetMtRoomManage(mtgPlaceId) {
+    document.item.mrNo.value = mtgPlaceId;
+    document.item.action = "<c:url value='/getMtRoomManage'/>";
+    document.item.submit();   
+}
+/*설명 : 회의실 신규등록 화면 호출 */
+function fncInsertMtRoom() {
+if(document.listForm.pageIndex.value == "") {
+	document.listForm.pageIndex.value = 1;
+} 
+document.listForm.action = "<c:url value='/insertMtRoom'/>";
+document.listForm.submit(); 
+}
+/*설명 : 회의실 목록 조회 enter키 처리 */
+function press() {
+    if (event.keyCode==13) {
+       fncSelectMtrList('1');
+    }
+}
+--> 
+</script>
+</head>
+<body>
+
+
+<div class="board">
+<div class="mtRoomListTitle">
+	<span class="resListTitle">😛 회의실 관리목록 😝</span>
+	<span class="subTitle">List of meetings</span>
+</div>
+<form name="listForm" action="mtRoomList" method="post">    
+
+
+<div class="search_box" title="회의실명">
+<ul>
+<li>
+<label for="">회의실명</label><!-- 회의실명 -->
+<input class="s_input2 vat" th:name="searchKeyword" type="text" value='' size="25" onkeypress="press();" title="" />
+<input type="submit" class="s_btn"  value='검색'  title='"button.inquire" '  onclick="fncSelectMtrList('1'); return false;" />
+<span class="btn_b"><a href="/insertMtRoom?searchCondition=1" onclick="fncInsertMtRoom(); return false;" title='등록'>등록</a></span>
+</li>
+</ul>
+</div>
+
+</form>
+<table class="board_list">                                       
+<colgroup>
+<col style="width:7%" />
+<col style="width:20%" />
+<col style="width:25%" />
+<col style="width:5%" />
+<col style="" />
+</colgroup>
+<thead>
+<tr>
+   <th scope="col">번호</th><!-- 번호 -->
+   <th scope="col">회의실명</th><!-- 회의실명 -->
+   <th scope="col">개방시간</th><!-- 개방시간 -->
+   <th scope="col">수용인원</th><!-- 수용인원 -->
+   <th scope="col">위치</th><!-- 위치 -->
+   <th scope="col">건물</th><!-- 건물 -->
+</tr>
+</thead>
+<tbody>
+<tr th:each="mtRoom :${mtRoomList}">
+	<td th:text="${mtRoom.mrNo}"/></td>
+	<td class="left">
+		<form name="item" method="post" action="mtRoomDetail">
+		
+			<input type="hidden" name="mrNo" th:value="${mtRoom.mrNo}"/>
+			<span class="link"><input type="submit" th:value="${mtRoom.mr_Name}" style="text-align : center;" id="titleFontSize"></span>
+		
+		</form>
+	</td>
+	<td><span th:text="${mtRoom.start_Time}"></span>~<span th:text="${mtRoom.end_Time}"></span></td>
+	<td><span th:text="${mtRoom.capacity}"></span>명</td>
+	<td th:text="${mtRoom.location}"></td>
+	<td> &nbsp; <span th:text="${mtRoom.building}"></span> &nbsp; <span th:text="${mtRoom.roomNo}"></span></td>
+</tr>
+</tbody>
+
+</table>
+<center style="
+    padding-top: 50px;
+"><span th:utext="${pageHttp}"></span></center>
+</div>
+</body>
+</html>
